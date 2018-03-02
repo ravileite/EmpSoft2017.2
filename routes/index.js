@@ -1,13 +1,21 @@
 var express = require('express');
 var router = express.Router();
 var analyse = require('../modules/analyse');
+var Data = require('../modules/data');
 
 /* GET home page. */
 router.post('/analyse', function(req, res, next) {
     var body = req.body;
-    var data = analyse.formData(body.data);
+    console.log(body);
+    var percent = analyse.formData(body.percent);
 
-    console.log(data);
+    data.save(function(err){
+        if(err){
+            return res.status(500).send('Err');
+        }else{
+            res.status(200).send('Data saved.')
+        }
+    });
 
     res.status(200).json(data);
 });
