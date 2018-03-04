@@ -7,9 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require ('mongoose');
 
 var index = require('./routes/index');
-
 var app = express();
-mongoose.connect("mongodb://localhost/DB");
+
+mongoose.connect("mongodb://localhost/chegou-agua");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,5 +42,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.use('/', server);
+app.use('/armazena', server);
+app.use('notificar', server);
 
 module.exports = app;

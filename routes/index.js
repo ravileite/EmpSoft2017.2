@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var analyse = require('../modules/analyse');
-var Data = require('../modules/data');
+var Data = require('../model/data');
 
 /* GET home page. */
 router.post('/analyse', function(req, res, next) {
